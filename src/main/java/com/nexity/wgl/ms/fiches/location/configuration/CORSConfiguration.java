@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,7 +17,8 @@ public class CORSConfiguration {
 	@Bean
 	@Profile("!prod")
 	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
+		return new WebMvcConfigurerAdapter() {
+
 			@Override
 			public void addCorsMappings(final CorsRegistry registry) {
 
