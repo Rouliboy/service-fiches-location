@@ -4,6 +4,9 @@ import static com.google.common.collect.Lists.newArrayList;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.ClassUtils;
+
+import com.nexity.wgl.ms.fiches.location.FichesLocationApplication;
 
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -19,8 +22,8 @@ public class SwaggerConfiguration {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.nexity.wgl.ms.fiches.location")).build()
-				.apiInfo(metaData());
+				.apis(RequestHandlerSelectors.basePackage(ClassUtils.getPackageName(FichesLocationApplication.class)))
+				.build().apiInfo(metaData());
 	}
 
 	private ApiInfo metaData() {
