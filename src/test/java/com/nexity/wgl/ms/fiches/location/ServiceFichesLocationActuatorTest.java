@@ -25,7 +25,7 @@ public class ServiceFichesLocationActuatorTest {
 
 	@Test
 	public void testHealthShouldReturnStatusOK() throws Exception {
-		final ResponseEntity<String> response = restTemplate.getForEntity(appUrl() + "health", String.class);
+		final ResponseEntity<String> response = restTemplate.getForEntity(appUrl() + "actuator/health", String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
